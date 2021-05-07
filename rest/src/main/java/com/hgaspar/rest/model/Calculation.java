@@ -82,7 +82,7 @@ public class Calculation implements Serializable{
 	
 	@Override
 	public String toString() {
-		String result =this.result== null? "":" ="+this.getResult().toPlainString();
+		String result =this.result== null? "":" = "+this.getResult().toPlainString();
 		String calculation =  a+ ""+ sign+ "" + b;
 		return calculation + result;
 	}

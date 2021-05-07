@@ -4,6 +4,7 @@ package com.hgaspar.calculator.consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,20 +29,20 @@ RabbitTemplate tamplete;
 	@RabbitListener(queues = MessagingConfig.QUEUE_IN,
 			messageConverter = "converter", replyContentType = "application/json")
 	public String consumeMessageFromQueue(Calculation calc){
-			
-        logger.info("SERVER: Executando o calculo {} com ID: {} ", calc, calc.getCalculationId());
+			MDC.put("requestId", calc.getCalculationId());
+        logger.info("[SERVER]: Executando o calculo {} ", calc);
         
 	    Calculation calcWithResult;
 		try {
 			calcWithResult = calculatorService.calculate(calc);
 		} catch (Throwable e) {
-			logger.error("calculo {}, teve o erro {}, com ID: {}", calc, e.getMessage(), calc.getCalculationId());
-			return "Erro: Não é possívrl dividir por zero";
+			logger.error("[SERVER]: Resultado do Cálculo {}, , com ID: {}, teve o erro {}", calc, e.getMessage(), calc.getCalculationId());
+			return "Erro: Não é possível dividir por zero";
 			
 		}
 
 		
-		logger.info("SERVER: calculo {}, teve o resultado {} com ID: {}", calc, calc.getResult(), calc.getCalculationId());
+		logger.info("[SERVER]: Resultado do Cálculo {}", calc);
 
 
 		return  String.valueOf( calcWithResult.getResult());

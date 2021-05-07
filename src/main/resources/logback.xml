@@ -3,10 +3,10 @@
     <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <charset>UTF-8</charset>
-            <Pattern>%d %-4relative [REQ_ID]:%X{requestId} %-5level %logger{45} - %msg%n</Pattern>
+            <Pattern>%d %-4relative %X{requestId} %-5level %logger{45} - %msg%n</Pattern>
         </encoder>
     </appender>
-    <root level="INFO">
+    <root level="ALL">
         <appender-ref ref="consoleAppender" />
     </root>
 </configuration>
