@@ -38,10 +38,10 @@ Inicializando os modulos:
 Executando as operações:
 
 O modulo rest fica dispnível na porta 8080 e suprta requesições através do método GET:
-•Adição:          http://localhost/add/a/b
-•Subtração:       http://localhost/sub/a/b
-•Divisão:         http://localhost/divide/a/b
-•Multiplicação:   http://localhost/multyply/a/b
+•Adição:          http://localhost:8080/add/a/b
+•Subtração:       http://localhost:8080/sub/a/b
+•Divisão:         http://localhost:8080/divide/a/b
+•Multiplicação:   http://localhost:8080/multiply/a/b
 
 (onde "a" é  primeiro operador e "b" o segundo)
 
