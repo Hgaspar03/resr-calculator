@@ -5,7 +5,7 @@ networks:
     driver: bridge
 services:
   rabbit:
-   hostname: localhost 
+   hostname: rabbitmq 
    image: rabbitmq:3-management
    networks:
     - app-tier
@@ -13,13 +13,13 @@ services:
     - 5672:5672
     - 15672:15672
   rest:
-    image: rest.jar 
+    image: rest
     networks:
     - app-tier
     ports:
     - "8080:8080"
   calculator:
-    image: calculator.jar  
+    image: calculator
     networks:
     - app-tier 
     ports:
