@@ -11,7 +11,7 @@ services:
     - app-tier
    ports:
     - 5672:5672
-    - 15672:15672s
+    - 15672:15672
   rest:
     image: rest.jar 
     networks:
